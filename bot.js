@@ -18,4 +18,4 @@ if(!message.channel.guild) return;
   }
 });
 
-client.login ("NTQzNTMzODMyNjc5MTk0NjMx.XaX4qg.nN0OMXatoJ9aRlYBINUnYbnrZLY")
+client.login(process.env.TOKEN);
