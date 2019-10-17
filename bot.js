@@ -1,22 +1,42 @@
 const Discord = require("discord.js");
-const myid = ['543533832679194631']
-const prefix = "$";
+const client = new Discord.Client();
+var prefix = "0";
+var adminprefix = '%'
 
+
+const developers = ["543533832679194631"]
 client.on('message', message => {
-  if (message.content.startsWith(prefix +"avatar")) {
-if(!message.channel.guild) return;
-      var mentionned = message.mentions.users.first();
-  var client;
-    if(mentionned){
-        var client = mentionned; } else {
-        var client = message.author;
-    }
-      const embed = new Discord.RichEmbed()
-                         .addField('Requested by:', "<@" + message.author.id + ">")
-      .setColor(000000)
-      .setImage(`${client.avatarURL}`)
-    message.channel.sendEmbed(embed);
+    var argresult = message.content.split(` `).slice(1).join(' ');
+      if (!developers.includes(message.author.id)) return;
+      
+  if (message.content.startsWith(adminprefix + 'setg')) {
+    client.user.setGame(argresult);
+      message.channel.send(`**✅   ${argresult}**`)
+  } else 
+     if (message.content === (adminprefix + "leave")) {
+    message.guild.leave();        
+  } else  
+  if (message.content.startsWith(adminprefix + 'setw')) {
+  client.user.setActivity(argresult, {type:'WATCHING'});
+      message.channel.send(`**✅   ${argresult}**`)
+  } else 
+  if (message.content.startsWith(adminprefix + 'setl')) {
+  client.user.setActivity(argresult , {type:'LISTENING'});
+      message.channel.send(`**✅   ${argresult}**`)
+  } else 
+  if (message.content.startsWith(adminprefix + 'sets')) {
+    client.user.setGame(argresult, "https://www.twitch.tv/dream");
+      message.channel.send(`**✅**`)
   }
+  if (message.content.startsWith(adminprefix + 'setname')) {
+  client.user.setUsername(argresult).then
+      message.channel.send(`Changing The Name To ..**${argresult}** `)
+} else
+if (message.content.startsWith(adminprefix + 'setava')) {
+  client.user.setAvatar(argresult);
+    message.channel.send(`Changing The Avatar To :**${argresult}** `);
+}
 });
 
-client.login(process.env.TOKEN);
+
+client.login('NTQzNTMzODMyNjc5MTk0NjMx.XaX4qg.nN0OMXatoJ9aRlYBINUnYbnrZLY');// لا تغير فيها شيء
