@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const myid = ['543533832679194631']
+const prefix = "$";
 
 client.on('message', message => {
   if (message.content.startsWith(prefix +"avatar")) {
